@@ -1,45 +1,21 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <vector>
+#include "level.h"
 
-using std::vector;
-
-class Level
+Level::Level()
 {
-public:
-	vector<vector<int>> map;
-	int tilesize = 90;
-	int align = 10;
-	int width;
-	int height;
-	sf::RenderWindow window;
-	Level(int x, int y, sf::RenderWindow w){
-		window = w;
-		width = x;
-		height = y;
-		for (int i = 0; i < x; i++) {
-			vector<int> v;
-			map.push_back(v);
-			for (int j = 0; j < y; j++) {
-				map[i].push_back(0);
-			}
-		}
+	chunkMap[std::make_pair(0, 0)] = *(new vector<vector<Tile>>(7, *(new vector<Tile>(7))));
+	for (int i = 0; i < 7; i++) for (int j = 0; j < 7; j++) chunkMap[std::make_pair(0, 0)][i][j] = new Tile());
+}
+
+void Level::generateChunk(int _x, int _y)
+{
+	int x = (_x + 3) / 7; //chunks
+	int y = (_y + 3) / 7;
+	if (!chunkMap.count(std::make_pair(x,y))) {
+		chunkMap[std::make_pair(x, y)] = *(new vector<vector<Tile>>(7, *(new vector<Tile>(7, *(new Tile())))));
 	}
-	~Level();
-	void Show() {
-		for (int i = 0; i < width; i++) {
-			sf::RectangleShape rect(sf::Vector2f(tilesize, tilesize));
-			for (int j = 0; j < height; j++) {
-				
-				rect.setFillColor(sf::Color::Cyan);
-				rect.setPosition((tilesize + align) * j + align, (tilesize + align) * i + align);
-				window.draw(rect);
-			}
-		}
-	}
+}
 
-	
-
-private:
-
-};
+Tile Level::getTile(int _x, int _y)
+{
+	return chunkMap[std::make_pair((_x+3)/7, (_y+3)/7)][(_x + 3) % 7][(_y + 3) % 7];
+}

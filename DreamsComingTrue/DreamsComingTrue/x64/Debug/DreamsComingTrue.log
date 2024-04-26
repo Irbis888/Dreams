@@ -1,2 +1,32 @@
-﻿  main.cpp
-  DreamsComingTrue.vcxproj -> C:\Users\Максим\source\repos\DreamsComingTrue\x64\Debug\DreamsComingTrue.exe
+﻿  Game.cpp
+  Tile.cpp
+  level.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(1420,27): error C2280: "Tile &Tile::operator =(const Tile &)": предпринята попытка ссылки на удаленную функцию
+  (компиляция исходного файла "level.cpp")
+  C:\Users\Максим\source\repos\DreamsComingTrue\Tile.h(18,1):
+  в этом месте создано компилятором: "Tile::operator ="
+  C:\Users\Максим\source\repos\DreamsComingTrue\Tile.h(18,1):
+  "Tile &Tile::operator =(const Tile &)": функция неявно удалена, так как в "Tile" содержится элемент данных "Tile::v" не являющегося классом типа с квалификатором const.
+  C:\Users\Максим\source\repos\DreamsComingTrue\Tile.h(16,12):
+   см. объявление "Tile::v"
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(1420,27):
+  контекст создания экземпляра шаблона (сначала самый старый)
+  	C:\Users\Максим\source\repos\DreamsComingTrue\level.cpp(5,71):
+  	выполняется компиляция ссылки на экземпляр класс шаблон функции "std::vector<Tile,std::allocator<Tile>>"
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(1480,26):
+  	во время компиляции функции-члена класс шаблон "std::vector<Tile,std::allocator<Tile>> &std::vector<Tile,std::allocator<Tile>>::operator =(const std::vector<Tile,std::allocator<Tile>> &)"
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(1420,27):
+  		см. первую ссылку на "std::vector<Tile,std::allocator<Tile>>::operator =" в "std::vector<std::vector<Tile,std::allocator<Tile>>,std::allocator<std::vector<Tile,std::allocator<Tile>>>>::_Assign_counted_range"
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(1496,30):
+  		см. первую ссылку на "std::vector<std::vector<Tile,std::allocator<Tile>>,std::allocator<std::vector<Tile,std::allocator<Tile>>>>::_Assign_counted_range" в "std::vector<std::vector<Tile,std::allocator<Tile>>,std::allocator<std::vector<Tile,std::allocator<Tile>>>>::operator ="
+  		C:\Users\Максим\source\repos\DreamsComingTrue\level.cpp(5,33):
+  		см. первую ссылку на "std::vector<std::vector<Tile,std::allocator<Tile>>,std::allocator<std::vector<Tile,std::allocator<Tile>>>>::operator =" в "Level::Level"
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(1496,9):
+  	выполняется компиляция ссылки на экземпляр шаблон функции "void std::vector<Tile,std::allocator<Tile>>::_Assign_counted_range<Tile*>(_Iter,const unsigned __int64)"
+          with
+          [
+              _Iter=Tile *
+          ]
+  
+  main.cpp
+  Создание кода...

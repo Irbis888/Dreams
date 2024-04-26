@@ -1,44 +1,21 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
+#pragma once
 #include <vector>
+#include <map>
+#include "Tile.h"
 
 using std::vector;
+using std::map;
 
-#pragma once
+
 class Level
 {
 public:
-	vector<vector<int>> map;
-	int tilesize = 90;
-	int align = 10;
-	int width;
-	int height;
-	Level(int x, int y) {
-		width = x;
-		height = y;
-		for (int i = 0; i < x; i++) {
-			vector<int> v;
-			map.push_back(v);
-			for (int j = 0; j < y; j++) {
-				map[i].push_back(0);
-			}
-		}
-	}
-	~Level();
-	void Show(sf::RenderWindow window) {
-		for (int i = 0; i < width; i++) {
-			sf::RectangleShape rect(sf::Vector2f(tilesize, tilesize));
-			for (int j = 0; j < height; j++) {
-
-				rect.setFillColor(sf::Color::Cyan);
-				rect.setPosition((tilesize + align) * j + align, (tilesize + align) * i + align);
-				window.draw(rect);
-			}
-		}
-	}
-
-
-
+	map<std::pair<int, int>, vector<vector<Tile>>> chunkMap;
+	Level();
+	Tile getTile(int _x, int _y);
 private:
+	// Dimensions of generated chuncks
+	void generateChunk(int _x, int _y); //x & y here are coordinates of a TILE, not of a CHUNK
+	
 
 }; 
