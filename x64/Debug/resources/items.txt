@@ -1,0 +1,6 @@
+0 25 0 Healing potion
+0 0 10 Strength potion
+1 0 0 Nino's shovel
+2 0 0 Beaver pickaxe
+0 30 30 Klimenkov blessing
+3 150 30 Mega Elephant Imba Drink 
